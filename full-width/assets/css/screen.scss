@@ -1,0 +1,370 @@
+
+// ::Imports pre-render. Must be after reset
+// ------------------------------------------------------------
+@import "libs/required";
+@import "libs/reset";
+@import "libs/settings";
+@import "libs/mixins";
+@import "libs/placeholders";
+
+// Use SASS globbing to import all _.scss files in the module folder.
+// These should be independent modules that follow the BEM/SMACSS way
+@import "modules/*"; 
+
+
+
+/* ::Base styles */
+/* ------------------------------------------------------------ */
+
+html {
+	font-size: 100%;
+	@include respond-to-max(768px, $IE9: false) { // Stop at precise width, as we're talking about devices
+		-webkit-text-size-adjust: 100%;	// Stops text scaling in iOS.
+		text-rendering: optimizeLegibility;
+		-webkit-font-smoothing: antialiased;
+	}
+}
+
+body {
+	background: $body-color;
+	color: $base-color;
+}
+
+a {
+	color: $action;
+	text-decoration: none;
+	@include link-active-styles { 	// Mixin for interactions (hover,focus,active)
+		color: $action-respond;
+	}
+	&:not(>img) {
+		@include force-wrap;
+	}
+}
+
+.hero {
+  position: relative;
+  background-image: url(../img/Curitiba.jpg);
+  background-color: #333333;
+  background-position: center bottom;
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  margin-bottom: 1.65em;
+  padding-top: 2.2em;
+  padding-bottom: 2.2em;
+  height: 500px;
+}
+
+.main-banner {
+
+}
+
+.row-parent{
+}
+
+.logo{
+	@include respond-to($a-vp){
+	width: 100%;
+	height: auto;
+padding-top: 5.75em;
+padding-left: 4%;
+padding-right: 8%;
+	
+	}
+}
+
+.cent{
+	width: 100%;
+}
+
+.border-2 {
+border-bottom: 2px dotted black;
+width: 95%;
+margin: 0 auto;
+@include leader(3);
+@include trailer(1);
+}
+		
+.feature-section{
+	width: 100%;
+}
+
+//.separate{
+	//@include respond-to($a-vp){
+	//border-right: none;
+	//padding-right: 0%;
+	//}
+	//@include respond-to($c-vp){
+	//border-right: 1px solid black;
+	//padding-right: 1%;
+	//}
+
+//,}
+
+.footer{
+	background-color: darkgrey;
+}
+
+p.is-unit-thin.current{
+@include adjust-font-size-to(38px);
+margin: 0 0 0 0;
+@include padding-trailer(2);
+width: 100%;
+text-align: left;
+}
+
+.current-issue{
+	@include leader(7);
+}
+
+.image-half-left{
+	@include leader(12);
+	float: left;
+	@include respond-to($a-vp){
+	width: 100%;
+	}
+	@include respond-to($d-vp){
+	width: 65%;
+	}
+}
+
+div.vignette img{
+	@include respond-to($a-vp){
+	width: 100%;
+	@include leader(4);
+	}
+	@include respond-to($d-vp){
+	width: 50%;
+	float: left;
+	@include leader(2);
+	}
+	@include respond-to($e-vp){
+	width: 35%;
+	float: left;
+	@include leader(2);
+	}
+
+
+}
+
+
+div.vignette-feature img{
+	@include respond-to($a-vp){
+	width: 47%;
+	@include leader(4);
+	padding-right: 2.5%;
+	float: left;
+	}
+}
+
+
+div.half-right-grid{
+	@include leader(12);
+	float: right;
+	width: 35%;
+	@include grid_columns(8);
+}
+
+.wordbreak{
+	word-break: break-all;
+}
+
+.grey{
+	fill: #92000C;
+}
+
+section.issue-notes{
+	@include respond-to($a-vp){
+		display: none;
+	}
+	@include respond-to($d-vp){
+		display: block;
+	}
+	@include respond-to($e-vp){
+		display: none;
+	}
+}
+
+
+.glob{
+	@include respond-to($b-vp){
+	margin-left: 2px;
+	margin-bottom: 30px;
+	}
+	@include respond-to($c-vp){
+	margin-left: 0px;
+	margin-bottom: 30px;
+	}
+	@include respond-to($d-vp){
+	margin-left: 320px;
+	margin-bottom: 30px;
+	}
+	@include respond-to($e-vp){
+	margin-left: 260px;
+	margin-bottom: 30px;
+	}
+}
+
+.intro-text{
+	font-family: 'tisaotregular';
+	@include leader(-10);
+	@include adjust-font-size-to(30px);
+	line-height: 38px;
+	text-align: center;
+}
+
+.big-intro-text{
+
+	@include respond-to($a-vp){
+		@include adjust-font-size-to(20px);
+		font-family: 'tisaotregular';
+		height: 200px;
+		color: black;
+		@include padding-leader(3);
+		padding-left: 20px;
+		padding-right: 20px; 
+		i{
+		font-family: 'tisa_otregular_italic';
+		}
+		b{
+		font-family: 'tisa_otmedium';
+		}
+		}
+	@include respond-to($b-vp){
+		@include adjust-font-size-to(32px);
+		height: 200px;
+		padding-left: 100px;
+		padding-right: 100px; 
+		@include padding-leader(6);
+	}
+	@include respond-to($c-vp){
+		@include adjust-font-size-to(32px);
+		height: 200px;
+		padding-left: 100px;
+		padding-right: 100px; 
+		@include padding-leader(6);
+	}
+	@include respond-to($d-vp){
+		@include adjust-font-size-to(40px);
+		height: 200px;
+		padding-left: 150px;
+		padding-right: 150px; 
+		@include padding-leader(6);
+	}
+	@include respond-to($e-vp){
+		height: 200px;
+		@include adjust-font-size-to(50px);
+	}
+	@include respond-to($f-vp){
+		@include adjust-font-size-to(60px);
+		height: 200px;
+		line-height: 72px;
+	}
+}
+
+span.tisa-italic{
+	font-family: 'tisa_otregular_italic';
+}
+
+div.row-parent.jamie-lemer{
+  position: relative;
+  background-image: url(../img/Curitiba.jpg);
+  background-color: #333333;
+  background-position: center bottom;
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  padding-top: 2.2em;
+  padding-bottom: 2.2em;
+  height: 500px;
+  border-bottom: white 5px solid;
+}
+
+div.row-parent.peter-malaise{
+  position: relative;
+  background-image: url(../img/rinko-kawauchi.jpg);
+  background-color: #333333;
+  background-position: center bottom;
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  padding-top: 2.2em;
+  padding-bottom: 2.2em;
+  height: 500px;
+  border-bottom: white 5px solid;
+}
+
+div.row-parent.curitiba{
+  position: relative;
+  background-image: url(../img/jcb.jpg);
+  background-color: #333333;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  padding-top: 2.2em;
+  padding-bottom: 2.2em;
+  height: 500px;
+    border-bottom: white 5px solid;
+}
+
+div.row-parent.trees{
+  position: relative;
+  background-image: url(../img/trees.jpg);
+  background-color: #333333;
+  background-position: center bottom;
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  padding-top: 2.2em;
+  padding-bottom: 2.2em;
+  height: 500px;
+    border-bottom: white 5px solid;
+}
+
+img.in-article-img{
+	width: 140%;
+	margin-left: -20%;
+	@include leader(6);
+}
+
+div.col__module.curitiba-mod{
+	background-color: rgba(255,255,255,0.6);
+	padding: 1px 20px 20px 20px;
+	h2 {
+		opacity: 1;
+	}
+	h1{
+		opacity: 1;
+	}
+	p{
+		opacity: 1;
+	}
+}
+
+ul.achive-list{
+	@include unordered;
+	font-family: 'tisaotregular';
+}
+
+div.row-parent.archives{
+	@include leader(20);
+}
+/* ::Import styles */
+/* ------------------------------------------------------------ */
+
+@import "libs/typography"; 					// Base level typography
+@import "libs/forms";						// Forms
+@import "add-ons/module-typeset"; 			// Specific typesetting
+@import "add-ons/grid"; 					// Grid system
+
+
+/* ::Print */
+/* ------------------------------------------------------------ */
+
+@media print {
+	body {
+		@include adjust-leading-to(2);
+		font-size: percentage(10 / 16);
+	}
+}
